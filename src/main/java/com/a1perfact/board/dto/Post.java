@@ -16,7 +16,7 @@ public class Post {
         this.title = postSaveForm.getTitle();
         this.nickname = postSaveForm.getNickname();
         this.content = postSaveForm.getContent();
-        this.isImportant = postSaveForm.isImportant();
+        this.isImportant = postSaveForm.getIsImportant();
     }
 
 }
