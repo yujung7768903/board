@@ -1,12 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Hello</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="/custom.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-</head>
+<html th:replace="~{/layout/layout :: layout ('글 쓰기', ~{::section}, true, null)}">
 <body>
+<a th:href="@{/post/new}" class="nav-link">글 쓰기</a>
+<section>
     <form id="post-write-form" th:action="@{/post}" th:object="${postSaveForm}" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">타이틀</label>
@@ -18,7 +14,7 @@
     </div>
         <div class="mb-3">
             <label for="content" class="form-label">본문</label>
-            <textarea rows="15" class="form-control" id="content" th:field="*{content}"></textarea>
+            <textarea rows="13" class="form-control" id="content" th:field="*{content}"></textarea>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="isImportant" th:field="*{isImportant}">
@@ -28,5 +24,6 @@
         </div>
         <button id="submit" type="submit" class="btn btn-primary">저장</button>
     </form>
+</section>
 </body>
 </html>
