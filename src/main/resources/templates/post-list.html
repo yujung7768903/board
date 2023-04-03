@@ -1,22 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{/layout/layout :: layout ('글 목록', ~{::section}, false, ~{::a})}">
 <body>
-<div class="container">
-    <div>
-        <table>
-            <thead>
+<a th:href="@{/post/new}" class="nav-link">글 쓰기</a>
+<section>
+    <table id="post-list-table" class="table table-bordered">
+        <thead>
             <tr>
-                <th>글 목록</th>
+                <td>제목</td>
+                <td>닉네임</td>
+                <td>본문</td>
             </tr>
-            </thead>
-            <tbody>
-            <tr th:each="post : ${postList}">
-                <td th:text="${post.title}"></td>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr th:each="post : ${postList}" th:class="${post.isImportant}? 'important'">
+                <td th:text="${post.title.length() <= 20} ? ${post.title} : ${post.title.substring(0,21) + '...'}"></td>
                 <td th:text="${post.nickname}"></td>
+                <td th:text="${post.content.length() <= 25} ? ${post.content} : ${post.content.substring(0, 26) + '...'}"></td>
             </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+        </tbody>
+    </table>
+</section>
 </body>
 </html>
