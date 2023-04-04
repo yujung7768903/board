@@ -32,4 +32,8 @@ public class PostService {
         postId++;
     }
 
+    public void deletePost(Integer postId) {
+        postMap.remove(postId);
+    }
+
 }

@@ -2,12 +2,12 @@
 <html th:replace="~{/layout/layout :: layout (${post.title}, ~{::section}, true, null)}">
 <body>
 <section>
-    <div class="flex-container horizontal space-between">
+    <div class="flex-container horizontal space-between align-center">
         <span th:text="|닉네임: ${post.nickname}|"></span>
         <div class="menu-container">
-            <span> 수정 </span>
-            <span> | </span>
-            <span> 삭제 </span>
+            <span class="btn">수정</span>
+            <span>|</span>
+            <span class="btn" th:onclick="|deletePost(${postId})|">삭제</span>
         </div>
     </div>
     <article>

@@ -53,6 +53,10 @@ article pre {
     justify-content: space-between;
 }
 
+.flex-container.align-center {
+    align-items: center;
+}
+
 #post-list-table td:first-child {
     width: 30%;
 }
@@ -93,4 +97,8 @@ article pre {
 
 .hidden {
     display: none;
+}
+
+.menu-container .btn {
+    padding: 6px;
 }

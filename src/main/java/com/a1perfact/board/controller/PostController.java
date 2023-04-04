@@ -52,9 +52,9 @@ public class PostController {
         return "redirect:/";
     }
 
-    @DeleteMapping("/post/{idListStr}")
-    public String deletePost(@PathVariable String idListStr) {
-        String[] idList = idListStr.split(",");
+    @DeleteMapping("/post/{postId}")
+    public String deletePost(@PathVariable Integer postId) {
+        postService.deletePost(postId);
         return "redirect:/";
     }
 }
