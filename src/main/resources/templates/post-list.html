@@ -12,10 +12,10 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <tr th:each="post : ${postList}" th:class="${post.isImportant}? 'important'">
-                <td th:text="${post.title.length() <= 20} ? ${post.title} : ${post.title.substring(0,21) + '...'}"></td>
-                <td th:text="${post.nickname}"></td>
-                <td th:text="${post.content.length() <= 25} ? ${post.content} : ${post.content.substring(0, 26) + '...'}"></td>
+            <tr th:each="id : ${postMap.keySet()}" th:class="${postMap.get(id).isImportant}? 'important' : _" th:onclick="|getPost(${id})|">
+                <td th:text="${postMap.get(id).title.length() <= 20} ? ${postMap.get(id).title} : ${postMap.get(id).title.substring(0,21) + '...'}"></td>
+                <td th:text="${postMap.get(id).nickname}"></td>
+                <td th:text="${postMap.get(id).content.length() <= 25} ? ${postMap.get(id).content} : ${postMap.get(id).content.substring(0, 26) + '...'}"></td>
             </tr>
         </tbody>
     </table>
