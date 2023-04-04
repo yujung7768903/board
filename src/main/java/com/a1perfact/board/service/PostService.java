@@ -4,20 +4,26 @@ import com.a1perfact.board.dto.Post;
 import com.a1perfact.board.dto.PostSaveForm;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class PostService {
 
-    private List<Post> postList = new ArrayList<>();
+    private Map<Integer, Post> postMap = new HashMap<>();
+    private Integer postId = 1;
 
-    public List<Post> getPostList() {
-        return postList;
+    public Map<Integer, Post> getPostList() {
+        return postMap;
+    }
+
+    public Post getPost(Integer postId) {
+        return postMap.get(postId);
     }
 
     public void savePost(PostSaveForm postSaveForm) {
-        postList.add(new Post(postSaveForm));
+        postMap.put(postId, new Post(postSaveForm));
+        postId++;
     }
 
 }

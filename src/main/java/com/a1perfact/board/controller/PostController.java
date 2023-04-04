@@ -8,11 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,9 +23,16 @@ public class PostController {
 
     @GetMapping("/")
     public String getPostList(Model model) {
-        List<Post> postList = postService.getPostList();
-        model.addAttribute("postList", postList);
+        Map<Integer, Post> postMap = postService.getPostList();
+        model.addAttribute("postMap", postMap);
         return "post-list";
+    }
+
+    @GetMapping("/post/{postId}")
+    public String getPost(@PathVariable Integer postId, Model model) {
+        Post post = postService.getPost(postId);
+        model.addAttribute("post", post);
+        return "post-read";
     }
 
     @GetMapping("/post/new")
@@ -38,6 +47,12 @@ public class PostController {
         }
         postService.savePost(postSaveForm);
         map.clear();
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/post/{idListStr}")
+    public String deletePost(@PathVariable String idListStr) {
+        String[] idList = idListStr.split(",");
         return "redirect:/";
     }
 }

@@ -7,6 +7,25 @@ a {
     color: black !important;
 }
 
+article {
+    margin-top: 20px;
+}
+
+article::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: lightgray;
+    margin-bottom: 20px;
+}
+
+article pre {
+    font-size: 1rem;
+    white-space: break-spaces;
+    text-align: justify;
+}
+
 .board-container {
     width: 100%;
     max-width: 100%;
@@ -16,6 +35,22 @@ a {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container.vertical {
+    flex-direction: column;
+}
+
+.flex-container.horizontal {
+    flex-direction: row;
+}
+
+.flex-container.space-between {
+    justify-content: space-between;
 }
 
 #post-list-table td:first-child {
