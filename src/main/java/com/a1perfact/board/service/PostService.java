@@ -12,6 +12,7 @@ public class PostService {
 
     private Map<Integer, Post> postMap = new HashMap<>();
     private Integer postId = 1;
+    private String autoCompleteNickname = "";
 
     public Map<Integer, Post> getPostList() {
         return postMap;
@@ -21,8 +22,13 @@ public class PostService {
         return postMap.get(postId);
     }
 
+    public String getAutoCompleteNickname() {
+        return autoCompleteNickname;
+    }
+
     public void savePost(PostSaveForm postSaveForm) {
         postMap.put(postId, new Post(postSaveForm));
+        autoCompleteNickname = postSaveForm.getNickname();
         postId++;
     }
 

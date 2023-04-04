@@ -36,7 +36,9 @@ public class PostController {
     }
 
     @GetMapping("/post/new")
-    public String writePost(final PostSaveForm postSaveForm) {
+    public String writePost(final PostSaveForm postSaveForm, Model model) {
+        String autoCompleteNickname = postService.getAutoCompleteNickname();
+        model.addAttribute("autoCompleteNickname", autoCompleteNickname);
         return "post-write";
     }
 
