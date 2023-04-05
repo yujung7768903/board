@@ -3,7 +3,7 @@
 <body>
 <a th:href="@{/post/new}" class="nav-link">글 쓰기</a>
 <section>
-    <form id="post-write-form" th:action="@{/post}" th:object="${postSaveForm}" method="post">
+    <form id="post-write-form" name="form" th:action="@{/post}" onsubmit="return validateForm()" th:object="${postSaveForm}" method="post">
         <div class="mb-3">
             <label for="title" class="form-label">타이틀</label>
             <input type="text" class="form-control" id="title" th:field="*{title}" aria-describedby="emailHelp">
@@ -11,7 +11,7 @@
         <div class="mb-3">
             <label for="nickname" class="form-label">닉네임</label>
             <input type="text" class="form-control" id="nickname" name="nickname" th:value="${autoCompleteNickname}">
-    </div>
+        </div>
         <div class="mb-3">
             <label for="content" class="form-label">본문</label>
             <textarea rows="13" class="form-control" id="content" th:field="*{content}"></textarea>
