@@ -3,6 +3,7 @@ package com.a1perfact.board.controller;
 import com.a1perfact.board.dto.Post;
 import com.a1perfact.board.dto.PostSaveForm;
 import com.a1perfact.board.service.PostService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +44,10 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    public String savePost(final PostSaveForm postSaveForm, final BindingResult bindingResult, final ModelMap map) {
-        if (bindingResult.hasErrors()) {
-            return "post-write";
+    public String savePost(@Valid final PostSaveForm postSaveForm, final BindingResult bindingResult, final ModelMap map) {
+        if (!bindingResult.hasErrors()) {
+            postService.savePost(postSaveForm);
         }
-        postService.savePost(postSaveForm);
         map.clear();
         return "redirect:/";
     }
