@@ -2,6 +2,7 @@ package com.a1perfact.board.controller;
 
 import com.a1perfact.board.dto.Post;
 import com.a1perfact.board.dto.PostSaveForm;
+import com.a1perfact.board.dto.SearchInfo;
 import com.a1perfact.board.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,9 +26,10 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/")
-    public String getPostList(Model model) {
-        Map<Integer, Post> postMap = postService.getPostList();
+    public String getPostList(@RequestParam("title") Optional<String> title, @RequestParam("nickname") Optional<String> nickname, Model model) {
+        Map<Integer, Post> postMap = postService.getPostList(title, nickname);
         model.addAttribute("postMap", postMap);
+        model.addAttribute("searchInfo", new SearchInfo(title, nickname));
         return "post-list";
     }
 
