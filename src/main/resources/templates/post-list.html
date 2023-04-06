@@ -12,22 +12,27 @@
         <span class="material-symbols-outlined input-group-text" onclick="filterPost()">search</span>
     </div>
     <span th:if="${searchInfo.isFiltered}" th:text="${postMap.size()} ? '검색 결과 총 ' + ${postMap.size()} + '개의 글을 찾았습니다.' : '검색 결과가 없습니다.'"></span>
-    <table id="post-list-table" class="table table-bordered">
-        <thead>
+    <div id="post-list-container">
+        <table id="post-list-table" class="table table-bordered">
+            <thead>
             <tr>
                 <td>제목</td>
                 <td>닉네임</td>
                 <td>본문</td>
             </tr>
-        </thead>
-        <tbody class="table-group-divider">
+            </thead>
+            <tbody class="table-group-divider">
             <tr th:each="id : ${postMap.keySet()}" th:class="${postMap.get(id).isImportant}? 'important' : _" th:onclick="|getPost(${id})|">
                 <td th:text="${postMap.get(id).title.length() <= 20} ? ${postMap.get(id).title} : ${postMap.get(id).title.substring(0,21) + '...'}"></td>
                 <td th:text="${postMap.get(id).nickname}"></td>
                 <td th:text="${postMap.get(id).content.length() <= 25} ? ${postMap.get(id).content} : ${postMap.get(id).content.substring(0, 26) + '...'}"></td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <div id="page-container">
+        <span th:each="page : ${pageList}" th:text="${page}" th:onclick="|getPostOnPage(${page})|"></span>
+    </div>
 </section>
 </body>
 </html>

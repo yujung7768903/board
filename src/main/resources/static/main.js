@@ -2,6 +2,11 @@ function getPost(postId) {
     window.location.href = "/post/" + postId;
 }
 
+function getPostOnPage(page) {
+    console.log(page);
+    window.location.href = `?page=${page}`;
+}
+
 function filterPost() {
     const searchWord = document.getElementById("search-word").value;
     if (!searchWord) {
@@ -49,4 +54,8 @@ function isEmpty(obj, msg) {
         return true;
     }
     return false;
+}
+
+function backToPrevPage() {
+    window.history.back();
 }

@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -26,10 +24,15 @@ public class PostController {
     private final PostService postService;
 
     @GetMapping("/")
-    public String getPostList(@RequestParam("title") Optional<String> title, @RequestParam("nickname") Optional<String> nickname, Model model) {
-        Map<Integer, Post> postMap = postService.getPostList(title, nickname);
-        model.addAttribute("postMap", postMap);
+    public String getPostList(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam("title") Optional<String> title,
+            @RequestParam("nickname") Optional<String> nickname,
+            Model model
+    ) {
+        model.addAttribute("postMap", postService.getPostList(page, title, nickname));
         model.addAttribute("searchInfo", new SearchInfo(title, nickname));
+        model.addAttribute("pageList", postService.getPageList());
         return "post-list";
     }
 
