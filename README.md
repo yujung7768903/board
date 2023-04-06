@@ -3,6 +3,9 @@
 ## 기술 스택
 Java 17, Spring Boot 3.0.5, Thymeleaf
 
+## Demo Site
+[Demo Site](http://43.201.160.177/)에서 바로 실행해보실 수 있습니다.
+
 ## 실행 방법
 Java 17 버전이 설치되어 있어야합니다.
 <details>
