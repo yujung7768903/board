@@ -3,6 +3,14 @@
 <body>
 <a th:href="@{/post/new}" class="nav-link">글 쓰기</a>
 <section>
+    <div id="search-container" class="input-group">
+        <select class="form-select" aria-label="search classification">
+            <option selected>제목</option>
+            <option value="nickname">닉네임</option>
+        </select>
+        <input class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="search">
+        <span class="material-symbols-outlined input-group-text">search</span>
+    </div>
     <table id="post-list-table" class="table table-bordered">
         <thead>
             <tr>

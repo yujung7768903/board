@@ -26,7 +26,7 @@ article pre {
     text-align: justify;
 }
 
-.board-container {
+#board-container {
     width: 100%;
     max-width: 100%;
     min-width: 300px;
@@ -35,6 +35,26 @@ article pre {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+#board-container section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#search-container * {
+    border-radius: 0;
+}
+
+#search-container select {
+    width: 150px;
+    flex: 0 0 auto;
+}
+
+#search-container input{
+    flex-grow: 1;
 }
 
 .flex-container {
