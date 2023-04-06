@@ -2,6 +2,7 @@ package com.a1perfact.board.controller;
 
 import com.a1perfact.board.dto.Post;
 import com.a1perfact.board.dto.PostSaveForm;
+import com.a1perfact.board.dto.SearchInfo;
 import com.a1perfact.board.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class PostController {
     public String getPostList(@RequestParam("title") Optional<String> title, @RequestParam("nickname") Optional<String> nickname, Model model) {
         Map<Integer, Post> postMap = postService.getPostList(title, nickname);
         model.addAttribute("postMap", postMap);
+        model.addAttribute("searchInfo", new SearchInfo(title, nickname));
         return "post-list";
     }
 

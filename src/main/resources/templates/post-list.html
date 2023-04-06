@@ -8,9 +8,10 @@
             <option value="title" selected>제목</option>
             <option value="nickname">닉네임</option>
         </select>
-        <input id="search-word" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="search">
+        <input id="search-word" th:value="${searchInfo.searchWord}" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="search">
         <span class="material-symbols-outlined input-group-text" onclick="filterPost()">search</span>
     </div>
+    <span th:if="${searchInfo.isFiltered}" th:text="${postMap.size()} ? '검색 결과 총 ' + ${postMap.size()} + '개의 글을 찾았습니다.' : '검색 결과가 없습니다.'"></span>
     <table id="post-list-table" class="table table-bordered">
         <thead>
             <tr>
