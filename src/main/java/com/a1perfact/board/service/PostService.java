@@ -31,7 +31,7 @@ public class PostService {
     }
 
     public int[] getPageList() {
-        return IntStream.rangeClosed(1, (int) (Math.ceil(postMap.size() / 11.0))).toArray();
+        return IntStream.rangeClosed(1, Math.max(1, (int) (Math.ceil(postMap.size() / 11.0)))).toArray();
     }
 
     public Post getPost(Integer postId) {
