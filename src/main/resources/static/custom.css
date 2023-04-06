@@ -77,11 +77,27 @@ article pre {
     align-items: center;
 }
 
+#post-list-container {
+    height: 500px;
+}
+
+#post-list-table tr{
+    height: 45px;
+}
+
 #post-list-table td:first-child {
     width: 30%;
 }
 #post-list-table td:nth-child(2) {
     width: 20%;
+}
+
+#post-list-table tbody tr {
+    cursor: pointer;
+}
+
+#post-list-table tbody tr:hover {
+    background-color: lightyellow;
 }
 
 #post-write-form {
@@ -121,4 +137,16 @@ article pre {
 
 .menu-container .btn {
     padding: 6px;
+}
+
+#page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+#page-container * {
+    cursor: pointer;
 }
