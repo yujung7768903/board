@@ -8,6 +8,7 @@ import java.util.Optional;
 public class SearchInfo {
     Boolean isFiltered = false;
     String searchWord = "";
+    String searchOption = "title";
 
     public SearchInfo(Optional<String> title, Optional<String> nickname) {
         if (title.isPresent()) {
@@ -17,6 +18,7 @@ public class SearchInfo {
         if (nickname.isPresent()) {
             this.isFiltered = true;
             this.searchWord = nickname.get();
+            this.searchOption = "nickname";
         }
     }
 }

@@ -5,8 +5,8 @@
 <section>
     <div id="search-container" class="input-group">
         <select id="search-condition-list" class="form-select" aria-label="search classification">
-            <option value="title" selected>제목</option>
-            <option value="nickname">닉네임</option>
+            <option value="title" th:selected="${searchInfo.searchOption == 'title'} ? true : false">제목</option>
+            <option value="nickname" th:selected="${searchInfo.searchOption == 'nickname'} ? true : false">닉네임</option>
         </select>
         <input id="search-word" th:value="${searchInfo.searchWord}" class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="search">
         <span class="material-symbols-outlined input-group-text" onclick="filterPost()">search</span>
