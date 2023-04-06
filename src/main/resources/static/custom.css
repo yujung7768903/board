@@ -28,9 +28,9 @@ article pre {
 
 #board-container {
     width: 100%;
-    max-width: 100%;
+    max-width: 800px;
     min-width: 300px;
-    margin: 0;
+    margin: auto;
     padding: 0;
     display: flex;
     flex-direction: column;

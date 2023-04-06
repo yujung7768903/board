@@ -4,11 +4,7 @@
 <section>
     <div class="flex-container horizontal space-between align-center">
         <span th:text="|닉네임: ${post.nickname}|"></span>
-        <div class="menu-container">
-            <span class="btn">수정</span>
-            <span>|</span>
-            <span class="btn" th:onclick="|deletePost(${postId})|">삭제</span>
-        </div>
+        <span class="btn" th:onclick="|deletePost(${postId})|">삭제</span>
     </div>
     <article>
         <pre th:text="${post.content}"></pre>
